@@ -1,6 +1,16 @@
 
 const routes = [
   {
+    path: '/PrimeiroAcesso',
+    component: () => import('layouts/ExternalLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('pages/FirstTime.vue'),
+      },
+    ],
+  },
+  {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -10,7 +20,7 @@ const routes = [
       },
       {
         path: 'Clientes',
-        component: () => import('pages/Client.vue'),
+        component: () => import('pages/Customer.vue'),
       },
       {
         path: 'Vendedores',
