@@ -1,9 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+/* eslint-disable import/no-extraneous-dependencies */
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-// import example from './module-example'
+import login from './login';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 /*
  * If not building with SSR mode, you can
@@ -17,13 +18,13 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // example
+      login,
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
-    strict: process.env.DEV
-  })
+    strict: process.env.DEV,
+  });
 
-  return Store
+  return Store;
 }
