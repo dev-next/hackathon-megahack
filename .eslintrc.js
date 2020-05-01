@@ -19,5 +19,8 @@ module.exports = {
         "vue"
     ],
     "rules": {
+      "import/prefer-default-export": "off",
+      "no-param-reassign": "off",
+      "import/no-extraneous-dependencies": "off"
     }
 };
