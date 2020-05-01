@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    Stote
+    Store
   </q-page>
 </template>
 
