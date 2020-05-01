@@ -1,12 +1,16 @@
 
 const routes = [
   {
-    path: '/PrimeiroAcesso',
+    path: '/Login',
     component: () => import('layouts/ExternalLayout.vue'),
     children: [
       {
         path: '',
-        component: () => import('pages/FirstTime.vue'),
+        component: () => import('pages/Login.vue'),
+      },
+      {
+        path: '/Register',
+        component: () => import('pages/Registration.vue'),
       },
     ],
   },
