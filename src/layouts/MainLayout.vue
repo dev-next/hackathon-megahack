@@ -12,9 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          <l-logo />
         </q-toolbar-title>
 
+        <q-btn flat round dense icon="mdi-bell" />
       </q-toolbar>
     </q-header>
 
@@ -46,12 +47,14 @@
 </template>
 
 <script>
+import lLogo from '../components/Login/Logo.vue';
 import EssentialLink from '../components/EssentialLink.vue';
 
 export default {
   name: 'MainLayout',
 
   components: {
+    lLogo,
     EssentialLink,
   },
 
