@@ -7,7 +7,7 @@
           <l-carousel class="login-carousel" />
         </div>
         <div class="col col-buttons q-mt-md">
-          <q-btn to="/" size="lg" color="grey-1" :class="primaryColor">Entrar</q-btn>
+          <q-btn to="/Entrar" size="lg" color="grey-1" :class="primaryColor">Entrar</q-btn>
           <q-btn to="/Registrar" size="lg" class="q-mt-sm">Cadastrar</q-btn>
         </div>
         <div class="slice"></div>
