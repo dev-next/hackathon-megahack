@@ -63,8 +63,6 @@ export default {
   color: $primary;
   font-weight: bold;
 }
-.col-date {
-}
 .col-total {
   font-size: 1.05rem;
   text-align: right;
