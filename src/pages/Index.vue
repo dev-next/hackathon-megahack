@@ -1,14 +1,16 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-full.svg"
-    >
+  <q-page class="q-pa-md">
+    <i-greeter />
   </q-page>
 </template>
 
 <script>
+import iGreeter from '../components/Index/Greeter.vue';
+
 export default {
   name: 'PageIndex',
+  components: {
+    iGreeter,
+  },
 };
 </script>
