@@ -8,6 +8,9 @@
 
 module.exports = function quasarConfig(/* ctx */) {
   return {
+    bin: {
+      linuxAndroidStudio: '/mnt/f5d75130-07fe-453e-97f5-bb8794414a69/Programas/android-studio/bin/studio.sh',
+    },
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
@@ -89,7 +92,7 @@ module.exports = function quasarConfig(/* ctx */) {
 
     // animations: 'all', // --- includes all animations
     // https://quasar.dev/options/animations
-    animations: [],
+    animations: 'all',
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
