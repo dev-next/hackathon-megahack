@@ -55,6 +55,10 @@ export default {
     EssentialLink,
   },
 
+  created() {
+    this.$q.dark.set(false);
+  },
+
   data() {
     return {
       leftDrawerOpen: false,
