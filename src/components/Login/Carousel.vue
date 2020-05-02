@@ -9,6 +9,7 @@
     animated
     control-color="white"
     navigation
+    navigation-icon="radio_button_unchecked"
     padding
     class="text-white bg-transparent"
     @transition="emitTransition"
@@ -41,19 +42,29 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   data: () => ({
     colors: {
       'p-1': 'primary',
       'p-2': 'positive',
-      'p-3': 'warning',
+      'p-3': 'secondary',
       'p-4': 'accent',
     },
     slide: 'p-1',
     lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.',
   }),
+
+  computed: {
+    ...mapState('login', ['pageColor']),
+  },
+
+  mounted() {
+    const [page] = Object.entries(this.colors).find((c) => c[1] === this.pageColor);
+    this.slide = page;
+    this.CHANGE_PAGE_COLOR(this.colors[this.slide]);
+  },
 
   methods: {
     emitTransition() {
