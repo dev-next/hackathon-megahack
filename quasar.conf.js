@@ -18,6 +18,7 @@ module.exports = function quasarConfig(ctx) {
       'apolloClient.js',
       'axios.js',
       'authStorage.js',
+      'filters.js',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
