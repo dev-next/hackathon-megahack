@@ -39,6 +39,12 @@ export default {
         date: new Date(),
         total: 199.99,
       },
+      {
+        // eslint-disable-next-line no-bitwise
+        number: ~~(Math.random() * 1000),
+        date: new Date(),
+        total: 199.99,
+      },
     ],
   }),
 };
