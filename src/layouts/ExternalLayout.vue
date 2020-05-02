@@ -56,6 +56,9 @@ export default {
   .text-positive {
     color: $positive !important
   }
+  .text-negative {
+    color: $negative !important
+  }
   .text-warning {
     color: $warning !important
   }

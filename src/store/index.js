@@ -21,6 +21,20 @@ export default function (/* { ssrContext } */) {
       login,
     },
 
+    state: {
+      token: null,
+      loggedUser: null,
+    },
+
+    mutations: {
+      SAVE_LOGGED_USER(store, user) {
+        store.loggedUser = user;
+      },
+      SAVE_TOKEN(store, token) {
+        store.token = token;
+      },
+    },
+
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEV,

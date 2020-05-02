@@ -8,7 +8,7 @@
         enter-active-class="animated fadeIn"
         leave-active-class="animated fadeOut"
       >
-        <q-form key="1">
+        <q-form @submit="attemptLogin" key="1">
           <q-input
             color="grey-1"
             v-model="login"
@@ -30,15 +30,20 @@
               />
             </template>
           </q-input>
+
+          <div v-if="isInvalidLogin" class="text-negative q-mt-md">
+            {{ errorMessage }}
+          </div>
+
+          <div class="button-container q-mt-lg">
+            <q-btn size="lg" to="/Login" flat color="grey-7">Voltar</q-btn>
+            <q-btn :disabled="isLoading" type="submit" size="lg" flat :class="primaryColor">
+              Entrar
+            </q-btn>
+          </div>
         </q-form>
       </transition>
 
-      <div class="button-container q-mt-lg">
-        <q-btn size="lg" to="/Login" flat color="grey-7">Voltar</q-btn>
-        <q-btn size="lg" to="/" flat :class="primaryColor">
-          Entrar
-        </q-btn>
-      </div>
     </div>
 
     <div class="slice" :style="sliceStyle"></div>
@@ -46,7 +51,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
+import { authenticate } from '../apollo/Login/queries';
 
 export default {
   data: () => ({
@@ -60,6 +66,10 @@ export default {
     },
 
     animation: null,
+    isLoading: false,
+
+    isInvalidLogin: false,
+    errorMessage: '',
   }),
 
   computed: {
@@ -90,6 +100,38 @@ export default {
     }, 2);
   },
 
+  methods: {
+    async attemptLogin() {
+      this.isLoading = true;
+      this.isInvalidLogin = false;
+
+      try {
+        const { data } = await this.$apollo.query({
+          query: authenticate,
+          variables: {
+            phone: this.login,
+            password: this.password,
+          },
+        });
+
+        if (data.errors) {
+          throw new Error(data.errors[0].message);
+        }
+
+        const { authenticate: { token, user } } = data;
+        this.SAVE_LOGGED_USER(user);
+        this.SAVE_TOKEN(token);
+
+        this.$router.push('/');
+      } catch (err) {
+        this.isInvalidLogin = true;
+        this.errorMessage = err.message.replace(/GraphQL error:/, '');
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    ...mapMutations(['SAVE_LOGGED_USER', 'SAVE_TOKEN']),
+  },
 };
 </script>
 

@@ -130,7 +130,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { createStoreAndOwner } from '../apollo/Login';
+import { createStoreAndOwner } from '../apollo/Login/mutations';
 
 const MAX_PAGES = 3;
 
