@@ -1,27 +1,29 @@
 <template>
   <q-page>
     <div class="q-md">
-      <div class="column justify-between">
+      <div class="column justify-between container">
+        <l-logo />
         <div class="col">
           <l-carousel class="login-carousel" />
         </div>
-        <div class="col justify-center flex">
-          <l-btn-container />
+        <div class="col col-buttons q-mt-md">
+          <q-btn to="/" size="lg" color="grey-1" :class="primaryColor">Entrar</q-btn>
+          <q-btn to="/Registrar" size="lg" class="q-mt-sm">Cadastrar</q-btn>
         </div>
+        <div class="slice"></div>
       </div>
     </div>
-    <div class="slice"></div>
   </q-page>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import lCarousel from '../components/Login/Carousel.vue';
-import lBtnContainer from '../components/Login/BtnContainer.vue';
+import lLogo from '../components/Login/Logo.vue';
 
 export default {
   components: {
-    lBtnContainer,
+    lLogo,
     lCarousel,
   },
 
@@ -31,7 +33,14 @@ export default {
     },
   },
 
+  created() {
+    this.$q.dark.set(true);
+  },
+
   computed: {
+    primaryColor() {
+      return [`text-${this.pageColor}`];
+    },
     ...mapState('login', ['pageColor']),
   },
 };
@@ -39,7 +48,21 @@ export default {
 
 <style scoped lang="scss">
   .login-carousel {
-    height: 70vh;
+    height: 60vh;
+  }
+
+  .col-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 100;
+    button, a {
+      width: 33%;
+      ::before {
+        box-shadow: none;
+      }
+    }
   }
 
   .slice {
