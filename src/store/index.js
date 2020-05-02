@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { SessionStorage } from 'quasar';
 
 import login from './login';
 
@@ -28,9 +29,11 @@ export default function (/* { ssrContext } */) {
 
     mutations: {
       SAVE_LOGGED_USER(store, user) {
+        SessionStorage.set('user', user);
         store.loggedUser = user;
       },
       SAVE_TOKEN(store, token) {
+        SessionStorage.set('token', token);
         store.token = token;
       },
     },

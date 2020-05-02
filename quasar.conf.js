@@ -17,6 +17,7 @@ module.exports = function quasarConfig(ctx) {
     boot: [
       'apolloClient.js',
       'axios.js',
+      'authStorage.js',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -56,7 +57,10 @@ module.exports = function quasarConfig(ctx) {
       directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: [
+        'LocalStorage',
+        'SessionStorage',
+      ],
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
