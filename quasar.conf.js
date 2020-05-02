@@ -6,7 +6,7 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
 
-module.exports = function quasarConfig(/* ctx */) {
+module.exports = function quasarConfig(ctx) {
   return {
     bin: {
       linuxAndroidStudio: '/mnt/f5d75130-07fe-453e-97f5-bb8794414a69/Programas/android-studio/bin/studio.sh',
@@ -15,7 +15,7 @@ module.exports = function quasarConfig(/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
-
+      'apolloClient.js',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -40,7 +40,7 @@ module.exports = function quasarConfig(/* ctx */) {
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       iconSet: 'material-icons', // Quasar icon set
-      lang: 'en-us', // Quasar language pack
+      lang: 'pt-br', // Quasar language pack
 
       // Possible values for "all":
       // * 'auto' - Auto-import needed Quasar components & directives
@@ -66,7 +66,12 @@ module.exports = function quasarConfig(/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history',
+      env: ctx.dev ? {
+        ENDPOINT_URL: JSON.stringify('http://localhost:4000/graphql'),
+      } : {
+        ENDPOINT_URL: JSON.stringify('http://peralta.dev-next.com:4000/graphql'),
+      },
 
       // rtl: false, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,
