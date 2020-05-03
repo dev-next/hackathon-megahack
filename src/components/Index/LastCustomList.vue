@@ -4,7 +4,11 @@
     <q-card>
       <q-markup-table>
         <tbody>
-          <tr v-for="l in lists" :key="l.number">
+          <tr
+            v-for="l in lists"
+            :key="l.number"
+            @click="$router.push(`v/${l.url}`)"
+          >
             <td>
               <div class="col-description">{{ l.description }}</div>
               <div class="col-seller">Vendedor: {{ l.seller }}</div>
@@ -33,6 +37,7 @@ export default {
         description: 'Promoção Dia das Mães',
         total: 299.99,
         seller: 'Júlia',
+        url: 'promo_1',
       },
       {
         // eslint-disable-next-line no-bitwise
@@ -43,6 +48,7 @@ export default {
         description: 'Lista Lúcia - Lavanderia',
         total: 299.99,
         seller: 'Júlia',
+        url: 'promo_2',
       },
       {
         // eslint-disable-next-line no-bitwise
@@ -53,6 +59,7 @@ export default {
         description: 'Lista Carta - Churrasco',
         total: 299.99,
         seller: 'Matheus',
+        url: 'promo_3',
       },
     ],
   }),

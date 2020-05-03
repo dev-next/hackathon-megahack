@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md payment-page">
-      <div class="payment-title q-mb-md">Entrega</div>
+      <div class="payment-title q-mb-md">Pagamento</div>
 
       <div class="cart-items">
         <q-list>

@@ -13,16 +13,14 @@
     <div class="details">
       <div class="left">
         <div class="name q-mb-xs">{{ name }}</div>
+
         <div class="fields">
-          <div class="field">
-            <span class="label">Cores: </span>
-            <span class="value">Azul, Amarelo</span>
-          </div>
-          <div class="field">
-            <span class="label">Tamanhos: </span>
-            <span class="value">P, M, G</span>
+          <div class="field" v-for="(f, k) in fields" :key="k">
+            <span class="label">{{ f.label }}: </span>
+            <span class="value">{{ f.values }}</span>
           </div>
         </div>
+
       </div>
       <div class="right">
         <div class="price">{{ price | moneyNum }}</div>
@@ -47,6 +45,9 @@ export default {
     price: {
       type: Number,
       default: 0,
+    },
+    fields: {
+      type: Array,
     },
   },
 

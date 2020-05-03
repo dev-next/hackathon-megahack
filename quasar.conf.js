@@ -76,7 +76,7 @@ module.exports = function quasarConfig(ctx) {
       env: ctx.dev ? {
         ENDPOINT_URL: JSON.stringify('http://localhost:4000/graphql'),
       } : {
-        ENDPOINT_URL: JSON.stringify('http://peralta.dev-next.com:4000/graphql'),
+        ENDPOINT_URL: JSON.stringify('http://vitrine.dev-next.com:4000/graphql'),
       },
 
       // rtl: false, // https://quasar.dev/options/rtl-support
@@ -115,9 +115,9 @@ module.exports = function quasarConfig(ctx) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Peralta App',
-        short_name: 'Peralta App',
-        description: 'A Quasar Framework app',
+        name: 'Vitrine',
+        short_name: 'Vitrine',
+        description: 'A Hackathon App',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
@@ -155,7 +155,7 @@ module.exports = function quasarConfig(ctx) {
     // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-      id: 'org.devnext.peralta',
+      id: 'org.devnext.vitrine',
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
@@ -183,7 +183,7 @@ module.exports = function quasarConfig(ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'peralta',
+        appId: 'vitrine',
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration

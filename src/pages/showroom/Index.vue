@@ -21,20 +21,31 @@ export default {
       {
         id: '1',
         url: 'https://via.placeholder.com/500',
-        name: 'Nome do Produto',
-        price: 79.99,
+        name: 'Vassoura',
+        price: 19.99,
+        fields: [
+          { label: 'Cores', values: 'Azul, Amarelo' },
+        ],
       },
       {
         id: '2',
         url: 'https://via.placeholder.com/500',
-        name: 'Nome do Produto',
-        price: 79.99,
+        name: 'Cesto de Lixo',
+        price: 29.99,
+        fields: [
+          { label: 'Cores', values: 'Preto' },
+          { label: 'Tamanhos', values: 'P, M, G' },
+        ],
       },
       {
         id: '3',
         url: 'https://via.placeholder.com/500',
-        name: 'Nome do Produto',
-        price: 79.99,
+        name: 'Saco de Lixo',
+        price: 9.99,
+        fields: [
+          { label: 'Cores', values: 'Azul, Preto' },
+          { label: 'Tamanhos', values: '5L, 15L, 50L' },
+        ],
       },
     ],
   }),
