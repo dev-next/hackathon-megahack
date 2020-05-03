@@ -18,6 +18,7 @@ const routes = [
       },
     ],
   },
+
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
@@ -35,11 +36,16 @@ const routes = [
         component: () => import('pages/Seller.vue'),
       },
       {
+        path: 'Produtos',
+        component: () => import('pages/products/Index.vue'),
+      },
+      {
         path: 'Loja',
         component: () => import('pages/Store.vue'),
       },
     ]
   },
+
   {
     path: '/v',
     component: () => import('layouts/ShowroomLayout.vue'),

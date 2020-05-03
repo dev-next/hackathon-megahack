@@ -77,6 +77,11 @@ export default {
           link: '/Loja',
         },
         {
+          title: 'Produtos',
+          icon: 'mdi-package-variant',
+          link: '/Produtos',
+        },
+        {
           title: 'Vendedores',
           icon: 'mdi-account',
           link: '/Vendedores',

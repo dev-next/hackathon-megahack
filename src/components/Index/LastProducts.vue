@@ -20,7 +20,7 @@
                 </div>
             </td>
             <td class="col-total">
-              {{ p.price | moneyNum }}
+              {{ p.value | moneyNum }}
             </td>
           </tr>
         </tbody>
@@ -31,27 +31,13 @@
 
 <script>
 export default {
+  props: {
+    products: {
+      type: Array,
+    },
+  },
+
   data: () => ({
-    products: [
-      {
-        // eslint-disable-next-line no-bitwise
-        id: ~~(Math.random() * 1000),
-        description: 'Vassoura',
-        price: 19.99,
-      },
-      {
-        // eslint-disable-next-line no-bitwise
-        id: ~~(Math.random() * 1000),
-        description: 'Cesto de Lixo',
-        price: 29.99,
-      },
-      {
-        // eslint-disable-next-line no-bitwise
-        id: ~~(Math.random() * 1000),
-        description: 'Saco de Lixo',
-        price: 9.99,
-      },
-    ],
   }),
 };
 </script>
@@ -81,7 +67,7 @@ export default {
 }
 
 .col-total {
-  font-size: 1.05rem;
+  font-size: 0.75rem;
   text-align: right;
 }
 </style>
