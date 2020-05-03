@@ -7,7 +7,7 @@
           round
           dense
           icon="mdi-arrow-left-thick"
-          :to="`/v/${this.$route.params.id}`"/>
+          @click="$router.back()"/>
         <q-toolbar-title class="showroom-title">{{ title }}</q-toolbar-title>
         <q-btn flat round dense icon="mdi-cart" @click="isCartOpen = !isCartOpen"/>
       </q-toolbar>

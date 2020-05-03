@@ -8,7 +8,7 @@
         entrará em contato o mais rapido possível com os detalhes da sua
         compra.
       </div>
-      <q-card class="q-mt-md">
+      <q-card class="q-mt-lg">
         <q-card-section>
           <div class="text-weight-bold q-mb-sm">PEDIDO Nº 52117</div>
           <q-list>
