@@ -2,10 +2,25 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated class="showroom-header bg-accent">
       <q-toolbar>
+        <q-btn
+          flat
+          round
+          dense
+          icon="mdi-arrow-left-thick"
+          :to="`/v/${this.$route.params.id}`"/>
         <q-toolbar-title class="showroom-title">{{ title }}</q-toolbar-title>
-        <q-btn flat round dense icon="mdi-cart" />
+        <q-btn flat round dense icon="mdi-cart" @click="isCartOpen = !isCartOpen"/>
       </q-toolbar>
     </q-header>
+
+    <q-drawer
+      side="right"
+      v-model="isCartOpen"
+      content-class="bg-grey-3"
+    >
+      <s-cart />
+    </q-drawer>
+
     <q-page-container class="q-mt-lg">
       <transition
         appear
@@ -20,11 +35,17 @@
 </template>
 
 <script>
+import sCart from '../components/Showroom/Cart.vue';
+
 export default {
   name: 'ShowroomLayout',
+  components: {
+    sCart,
+  },
 
   data: () => ({
     title: 'Loja da Maria Bonita',
+    isCartOpen: false,
   }),
 
   created() {
@@ -41,7 +62,6 @@ export default {
 
     .showroom-title {
       font-weight: bold;
-      padding-left: 33px;
       text-align: center;
     }
 }

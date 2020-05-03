@@ -52,7 +52,7 @@ export default {
 
   methods: {
     productDetail() {
-      this.$router.push(`${this.$route.params.id}/item/${this.id}`);
+      this.$router.push(`/v/${this.$route.params.id}/item/${this.id}`);
     },
   },
 };

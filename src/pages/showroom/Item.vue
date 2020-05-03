@@ -69,8 +69,9 @@
     <q-btn
       class="btn-carrinho q-mt-lg "
       color="accent"
+      size="lg"
     >
-      Adicionar ao Carrinho
+      Comprar
     </q-btn>
   </div>
 </template>
