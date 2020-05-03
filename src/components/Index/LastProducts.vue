@@ -1,7 +1,7 @@
 <template>
   <div>
-    <span class="card-title">Produtos</span>
-    <span class="card-subtitle">Últimos Cadastrados</span>
+    <span class="card-title" v-if="isIndex">Produtos</span>
+    <span v-if="isIndex" class="card-subtitle">Últimos Cadastrados</span>
     <q-card>
       <q-markup-table>
         <tbody>
@@ -33,7 +33,10 @@
 export default {
   props: {
     products: {
-      type: Array,
+      type: [Array, Object],
+    },
+    isIndex: {
+      type: Boolean,
     },
   },
 

@@ -2,7 +2,7 @@
   <q-page class="q-pa-md">
     <i-greeter />
     <i-last-orders class="q-mt-lg" />
-    <i-last-products :products="lastItems" class="q-mt-lg"/>
+    <i-last-products isIndex :products="lastItems" class="q-mt-lg"/>
     <i-last-custom-list class="q-mt-lg"/>
   </q-page>
 </template>
