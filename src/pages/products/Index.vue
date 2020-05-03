@@ -3,6 +3,7 @@
       <h2>Produtos</h2>
 
       <i-products-list
+        v-if="!$apollo.loading"
         :products="items"
       />
     </q-page>

@@ -33,7 +33,7 @@ const routes = [
       },
       {
         path: 'Vendedores',
-        component: () => import('pages/Seller.vue'),
+        component: () => import('pages/sellers/Index.vue'),
       },
       {
         path: 'Produtos',
