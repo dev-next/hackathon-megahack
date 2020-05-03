@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout class="main-layout" view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -80,7 +80,7 @@ export default {
           icon: 'mdi-file-chart',
         },
         {
-          title: 'Estoque',
+          title: 'Produtos',
           icon: 'mdi-package-variant-closed',
           link: '/Produtos',
         },
@@ -124,3 +124,32 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.main-layout {
+  h2 {
+    color: $grey-6;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.text-primary {
+  color: $primary !important
+}
+.text-secondary {
+  color: $secondary !important
+}
+.text-accent {
+  color: $accent !important
+}
+.text-positive {
+  color: $positive !important
+}
+.text-negative {
+  color: $negative !important
+}
+.text-warning {
+  color: $warning !important
+}
+</style>

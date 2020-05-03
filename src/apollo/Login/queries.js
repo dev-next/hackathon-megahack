@@ -13,7 +13,6 @@ export const authenticate = gql`
           id,
           name
         }
-        photo
       }
     }
   }

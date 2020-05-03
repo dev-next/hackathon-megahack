@@ -40,6 +40,10 @@ const routes = [
         component: () => import('pages/products/Index.vue'),
       },
       {
+        path: 'Produtos/Adicionar',
+        component: () => import('pages/products/Add.vue'),
+      },
+      {
         path: 'Loja',
         component: () => import('pages/Store.vue'),
       },

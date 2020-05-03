@@ -15,7 +15,7 @@
                     style="height: 50px; width: 50px"
                   />
                   <div class="col-descripion q-ml-sm">
-                    {{ p.description }}
+                    {{ p.name }}
                   </div>
                 </div>
             </td>

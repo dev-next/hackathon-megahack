@@ -28,9 +28,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  h2 {
-    color: $grey-6;
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
 </style>

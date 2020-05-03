@@ -5,7 +5,7 @@
     </q-avatar>
     <div class="info q-ml-md q-pt-xs">
       <div class="user-name">{{ loggedUser.name }}</div>
-      <div class="user-store">Teste 2</div>
+      <div class="user-store">{{ loggedUser.stores[0].name }}</div>
     </div>
   </div>
 </template>
