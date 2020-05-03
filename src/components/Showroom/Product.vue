@@ -12,7 +12,7 @@
     </q-img>
     <div class="details">
       <div class="left">
-        <div class="name">{{ name }}</div>
+        <div class="name q-mb-xs">{{ name }}</div>
         <div class="fields">
           <div class="field">
             <span class="label">Cores: </span>
@@ -48,14 +48,11 @@ export default {
       type: Number,
       default: 0,
     },
-    detail: {
-      type: String,
-    },
   },
 
   methods: {
     productDetail() {
-      console.log(this.id);
+      this.$router.push(`${this.$route.params.id}/item/${this.id}`);
     },
   },
 };
@@ -78,7 +75,8 @@ export default {
         text-align: right;
       }
       .name {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
       }
       .fields {
         font-size: 0.8rem;
@@ -86,7 +84,7 @@ export default {
         color: $grey-8;
       }
       .price {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         color: $accent;
         font-weight: bold;
       }

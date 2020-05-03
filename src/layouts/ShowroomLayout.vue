@@ -7,7 +7,14 @@
       </q-toolbar>
     </q-header>
     <q-page-container class="q-mt-lg">
-      <router-view />
+      <transition
+        appear
+        mode="out-in"
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <router-view />
+      </transition>
     </q-page-container>
   </q-layout>
 </template>
