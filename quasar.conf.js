@@ -72,7 +72,7 @@ module.exports = function quasarConfig(ctx) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'history', // available values: 'hash', 'history',
+      vueRouterMode: 'hash', // available values: 'hash', 'history',
       env: ctx.dev ? {
         ENDPOINT_URL: JSON.stringify('http://localhost:4000/graphql'),
       } : {

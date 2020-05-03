@@ -16,7 +16,7 @@
       <div class="total q-pr-md q-mb-sm">
         Total: R$ 100,00
       </div>
-      <q-btn size="lg" color="accent"> Continuar </q-btn>
+      <q-btn size="lg" @click="checkout" color="accent"> Continuar </q-btn>
     </div>
   </div>
 </template>
@@ -53,21 +53,21 @@ export default {
         quantity: 3,
       },
       {
-        id: '3',
+        id: '4',
         url: 'https://via.placeholder.com/500',
         name: 'Nome do Produto',
         price: 79.99,
         quantity: 3,
       },
       {
-        id: '3',
+        id: '5',
         url: 'https://via.placeholder.com/500',
         name: 'Nome do Produto',
         price: 79.99,
         quantity: 3,
       },
       {
-        id: '3',
+        id: '6',
         url: 'https://via.placeholder.com/500',
         name: 'Nome do Produto',
         price: 79.99,
@@ -75,6 +75,12 @@ export default {
       },
     ],
   }),
+
+  methods: {
+    checkout() {
+      this.$router.push(`/v/${this.$route.params.id}/Entrega`);
+    },
+  },
 };
 </script>
 

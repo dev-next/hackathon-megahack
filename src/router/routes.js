@@ -49,6 +49,10 @@ const routes = [
         component: () => import('pages/showroom/Index.vue'),
       },
       {
+        path: ':id/Entrega',
+        component: () => import('pages/showroom/Delivery.vue'),
+      },
+      {
         path: ':id/item/:item',
         component: () => import('pages/showroom/Item.vue'),
       }
