@@ -25,6 +25,7 @@
       bordered
       content-class="bg-grey-1"
     >
+      <user-info />
       <q-list>
         <q-item-label
           header
@@ -47,6 +48,8 @@
 </template>
 
 <script>
+
+import UserInfo from '../components/UserInfo.vue';
 import lLogo from '../components/Login/Logo.vue';
 import EssentialLink from '../components/EssentialLink.vue';
 
@@ -55,6 +58,7 @@ export default {
 
   components: {
     lLogo,
+    UserInfo,
     EssentialLink,
   },
 
@@ -72,24 +76,48 @@ export default {
           link: '/',
         },
         {
-          title: 'Loja',
-          icon: 'storefront',
-          link: '/Loja',
+          title: 'Relatórios',
+          icon: 'mdi-file-chart',
         },
         {
-          title: 'Produtos',
-          icon: 'mdi-package-variant',
+          title: 'Estoque',
+          icon: 'mdi-package-variant-closed',
           link: '/Produtos',
+        },
+        {
+          title: 'Tendências de Consumo',
+          icon: 'mdi-chart-line',
+          withSeparator: true,
+        },
+        {
+          title: 'Adicionar Produtos',
+          icon: 'mdi-package-variant',
+          link: '/Produtos/Adicionar',
+        },
+        {
+          title: 'Criar Listas',
+          icon: 'mdi-cart',
+          link: '/Listas',
         },
         {
           title: 'Vendedores',
           icon: 'mdi-account',
           link: '/Vendedores',
+          withSeparator: true,
         },
         {
-          title: 'Clientes',
+          title: 'Conta',
           icon: 'mdi-account',
           link: '/Clientes',
+        },
+        {
+          title: 'Configurações',
+          icon: 'mdi-cog',
+          withSeparator: true,
+        },
+        {
+          title: 'Perguntas Frequentes',
+          icon: 'mdi-help',
         },
       ],
     };
