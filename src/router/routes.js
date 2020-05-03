@@ -40,6 +40,16 @@ const routes = [
       },
     ]
   },
+  {
+    path: '/v',
+    component: () => import('layouts/ShowroomLayout.vue'),
+    children: [
+      {
+        path: ':id',
+        component: () => import('pages/showroom/Index.vue'),
+      },
+    ],
+  },
 ];
 
 // Always leave this as last one

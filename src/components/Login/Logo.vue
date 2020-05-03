@@ -1,6 +1,6 @@
 <template>
     <div class="logo q-mb-md q-mt-md">
-      <span class="title">LOGO</span>
+      <span class="title">VITRINE</span>
     </div>
 </template>
 
