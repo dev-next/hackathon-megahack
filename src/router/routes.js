@@ -53,6 +53,14 @@ const routes = [
         component: () => import('pages/showroom/Delivery.vue'),
       },
       {
+        path: ':id/Pagamento',
+        component: () => import('pages/showroom/Payment.vue'),
+      },
+      {
+        path: ':id/Checkout',
+        component: () => import('pages/showroom/Checkout.vue'),
+      },
+      {
         path: ':id/item/:item',
         component: () => import('pages/showroom/Item.vue'),
       }

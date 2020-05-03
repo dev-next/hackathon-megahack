@@ -80,7 +80,7 @@ export default {
 
   methods: {
     goToPayingOptions() {
-      this.$router.push(`/v/${this.$route.params.id}/Checkout`);
+      this.$router.push(`/v/${this.$route.params.id}/Pagamento`);
     },
   },
 };
