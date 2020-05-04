@@ -75,7 +75,7 @@ module.exports = function quasarConfig(ctx) {
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history',
       env: ctx.dev ? {
-        ENDPOINT_URL: JSON.stringify('http://localhost:4000/graphql'),
+        ENDPOINT_URL: JSON.stringify('http://vitrine-api.dev-next.com:4000/graphql'),
       } : {
         ENDPOINT_URL: JSON.stringify('http://vitrine-api.dev-next.com:4000/graphql'),
       },

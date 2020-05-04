@@ -106,7 +106,7 @@ export default {
       this.isInvalidLogin = false;
 
       try {
-        const { data } = await this.$apollo.query({
+        let { data } = await this.$apollo.query({
           query: authenticate,
           variables: {
             phone: this.login,
@@ -115,7 +115,28 @@ export default {
         });
 
         if (data.errors) {
-          throw new Error(data.errors[0].message);
+          /* FOR EXIBITION ONLY */
+          data = {
+            authenticate: {
+              token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYWRiNzVlODk5YWM5NzgzZTI5ZTIyMSIsIm5hbWUiOiJBbmRyZSBBZHJpYW5vIiwicGhvbmUiOiIoMTEpIDExMTExLTExMTEiLCJ0eXBlIjoiU1RPUkVfT1dORVIiLCJzdG9yZXMiOlt7Im5hbWUiOiJUZXN0ZSIsImlkIjoiNWVhZGI3MGQ4OTlhYzk3ODNlMjllMjFlIn1dLCJpYXQiOjE1ODg2MTI3MDZ9.o33tEJqnDGeXBb7u88nTGZQpgNjt3WZsj9xs6jkDex0',
+              user: {
+                id: '5eadb75e899ac9783e29e221',
+                name: 'Andre Adriano',
+                email: null,
+                phone: '(11) 11111-1111',
+                type: 'STORE_OWNER',
+                stores: [
+                  {
+                    id: '5eadb70d899ac9783e29e21e',
+                    name: 'Teste',
+                    documentNumber: null,
+                  },
+                ],
+              },
+            },
+          };
+          /* -------------- */
+          // throw new Error(data.errors[0].message);
         }
 
         const { authenticate: { token, user } } = data;
@@ -124,8 +145,35 @@ export default {
 
         this.$router.push('/');
       } catch (err) {
-        this.isInvalidLogin = true;
-        this.errorMessage = err.message.replace(/GraphQL error:/, '');
+        /* FOR EXIBITION ONLY */
+        const data = {
+          authenticate: {
+            token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYWRiNzVlODk5YWM5NzgzZTI5ZTIyMSIsIm5hbWUiOiJBbmRyZSBBZHJpYW5vIiwicGhvbmUiOiIoMTEpIDExMTExLTExMTEiLCJ0eXBlIjoiU1RPUkVfT1dORVIiLCJzdG9yZXMiOlt7Im5hbWUiOiJUZXN0ZSIsImlkIjoiNWVhZGI3MGQ4OTlhYzk3ODNlMjllMjFlIn1dLCJpYXQiOjE1ODg2MTI3MDZ9.o33tEJqnDGeXBb7u88nTGZQpgNjt3WZsj9xs6jkDex0',
+            user: {
+              id: '5eadb75e899ac9783e29e221',
+              name: 'Andre Adriano',
+              email: null,
+              phone: '(11) 11111-1111',
+              type: 'STORE_OWNER',
+              stores: [
+                {
+                  id: '5eadb70d899ac9783e29e21e',
+                  name: 'Teste',
+                  documentNumber: null,
+                },
+              ],
+            },
+          },
+        };
+        // throw new Error(data.errors[0].message);
+        const { authenticate: { token, user } } = data;
+        this.SAVE_LOGGED_USER(user);
+        this.SAVE_TOKEN(token);
+        this.$router.push('/');
+        /* -------------- */
+
+        // this.isInvalidLogin = true;
+        // this.errorMessage = err.message.replace(/GraphQL error:/, '');
       } finally {
         this.isLoading = false;
       }
