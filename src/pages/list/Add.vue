@@ -6,28 +6,22 @@
       <q-form @submit="saveItem">
         <q-input
          label="Nome"
-         v-model="product.name"
+         v-model="catalogue.name"
          :rules="[v => v.length >= 3 || 'Nome precisa ter ao menos 3 caracteres']"
         />
+
         <q-input
-         label="Descrição"
-         v-model="product.description"
-         type="textarea"
+         label="Nome único (url/link)"
+         v-model="catalogue.slug"
+         :rules="[() => validate || 'Este nome já existe. Escolha outro']"
+         :loading="loadingState"
+         @blur="refecth"
+         @input="refecth"
         />
+
         <q-input
-          label="Preço"
-          v-model="product.value"
-          mask="#,##"
-          fill-mask="0"
-          input-class="text-right"
-          unmasked-value
-          reverse-fill-mask
-          :rules="[v => !!v || 'Preço nao pode ser vazio']"
-        />
-        <p-product-tags
-          :defaultOptions="tagsOptions"
-          label="Tags"
-          v-model="product.tags"
+         label="Comprador"
+         v-model="catalogue.customer"
         />
 
         <div v-if="errorMsg" class="error-message q-mt-sm text-negative">
@@ -51,31 +45,37 @@
 
 <script>
 import { mapState } from 'vuex';
-import pProductTags from '../../components/Products/productTags.vue';
-import { createItem } from '../../apollo/Products/mutations';
-import { tags } from '../../apollo/Products/queries';
+import { validateSlug } from '../../apollo/Lists/queries';
+import { createCatalogue } from '../../apollo/Lists/mutations';
 
 export default {
   apollo: {
-    tagsOptions: {
-      query: tags,
-      update: (d) => d.tags,
+    validate: {
+      query: validateSlug,
+      variables() {
+        return {
+          slug: this.catalogue.slug,
+        }
+      },
+      update: (data) => data.validateSlug,
     },
   },
 
   components: {
-    pProductTags,
+
   },
 
   data: () => ({
-    tags: [],
-    tagsOptions: [],
-    product: {
+    catalogue: {
       name: '',
-      description: '',
-      value: 0,
-      tags: [],
+      slug: '',
+      items: [],
+      customer: '',
     },
+
+    validate: false,
+
+    loadingState: false,
     isLoading: false,
     errorMsg: null,
   }),
@@ -85,8 +85,12 @@ export default {
   },
 
   methods: {
+    refecth() {
+      return this.$apollo.queries.validate.refetch();
+    },
+
     async saveItem() {
-      try {
+      /*try {
         this.isLoading = true;
         this.errorMsg = null;
 
@@ -117,15 +121,16 @@ export default {
         this.errorMsg = err.message.replace(/GraphQL error:/, '');
       } finally {
         this.isLoading = false;
-      }
+      }*/
     },
 
     resetForm() {
-      this.product = {
+      this.catalogue = {
         name: '',
-        description: '',
-        value: 0,
-        tags: [],
+        slug: '',
+        items: [],
+        seller: '',
+        customer: '',
       };
     },
   },
