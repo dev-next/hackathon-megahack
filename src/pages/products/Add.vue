@@ -1,7 +1,7 @@
 <template>
   <div>
     <q-page class="q-pa-md">
-      <h2>Adicionar novo Produto</h2>
+      <h2>Adicionar Produto</h2>
 
       <q-form @submit="saveItem">
         <q-input

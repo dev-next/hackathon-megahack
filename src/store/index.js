@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import { SessionStorage } from 'quasar';
 
 import login from './login';
+import showroom from './showroom';
 
 Vue.use(Vuex);
 
@@ -20,6 +21,7 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       login,
+      showroom,
     },
 
     state: {

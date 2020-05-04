@@ -57,9 +57,16 @@ const routes = [
         path: 'Loja',
         component: () => import('pages/Store.vue'),
       },
+      {
+        path: 'Lista/Adicionar',
+        component: () => import('pages/list/Add.vue'),
+      },
     ]
   },
-
+  {
+    path: '/v/Erro',
+    component: () => import('pages/showroom/Error.vue'),
+  },
   {
     path: '/v',
     component: () => import('layouts/ShowroomLayout.vue'),
@@ -83,7 +90,7 @@ const routes = [
       {
         path: ':id/item/:item',
         component: () => import('pages/showroom/Item.vue'),
-      }
+      },
     ],
   },
 ];

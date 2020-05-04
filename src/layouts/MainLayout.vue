@@ -97,7 +97,7 @@ export default {
         {
           title: 'Criar Listas',
           icon: 'mdi-cart',
-          link: '/Listas',
+          link: '/Lista/Adicionar',
         },
         {
           title: 'Vendedores',

@@ -1,8 +1,5 @@
 <template>
-  <q-slide-item left-color="negative" right-color="negative">
-    <template v-slot:left>
-      <q-icon name="mdi-delete" />
-    </template>
+  <q-slide-item @right="remove" right-color="negative">
     <template v-slot:right>
       <q-icon name="mdi-delete" />
     </template>
@@ -16,7 +13,7 @@
       />
       <div class="img-container">
         <q-img
-          :src="url"
+          :src="photos[0]"
           :alt="name"
           class="rounded-borders product-img"
           style="height: 10vh; width: 10vh"
@@ -26,28 +23,40 @@
       <div class="info q-ml-sm">
         <div class="product-name">{{ name }}</div>
         <div class="product-description">Azul</div>
-        <div class="product-quantity">Quantidade: {{ quantity }}</div>
-        <div class="product-price">{{ price | moneyNum }}</div>
+        <div class="product-qte">Quantidade: {{ qte }}</div>
+        <div class="product-value">{{ value * qte | moneyNum }}</div>
       </div>
     </div>
   </q-slide-item>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   props: {
-    url: {
+    id: {
       type: String,
+    },
+    photos: {
+      type: Array,
     },
     name: {
       type: String,
     },
-    price: {
+    value: {
       type: Number,
     },
-    quantity: {
+    qte: {
       type: Number,
     },
+  },
+
+  methods: {
+    remove() {
+      this.removeFromCart({ id: this.id, qte: this.qte });
+    },
+    ...mapActions('showroom', ['removeFromCart']),
   },
 };
 </script>
@@ -74,13 +83,13 @@ export default {
     font-size: 0.8rem;
     color: $grey-8
   }
-  .product-quantity {
+  .product-qte {
     width: 50%;
     display: inline-block;
     color: $grey-8;
     font-size: 0.8rem;
   }
-  .product-price {
+  .product-value {
     text-align: right;
     width: 50%;
     display: inline-block;
