@@ -37,7 +37,7 @@ export default {
         description: 'Promoção Dia das Mães',
         total: 299.99,
         seller: 'Júlia',
-        url: 'promo_1',
+        url: 'vestidos-para-helen-4',
       },
       {
         // eslint-disable-next-line no-bitwise
@@ -48,7 +48,7 @@ export default {
         description: 'Lista Lúcia - Lavanderia',
         total: 299.99,
         seller: 'Júlia',
-        url: 'promo_2',
+        url: 'lista-de-teste-2',
       },
       {
         // eslint-disable-next-line no-bitwise
@@ -59,7 +59,7 @@ export default {
         description: 'Lista Carta - Churrasco',
         total: 299.99,
         seller: 'Matheus',
-        url: 'promo_3',
+        url: 'vestidos-para-helen-2',
       },
     ],
   }),
