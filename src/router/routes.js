@@ -47,12 +47,6 @@ const routes = [
         path: 'Loja',
         component: () => import('pages/Store.vue'),
       },
-      //lista de todos os catalogos
-      {
-        path: 'Lista',
-        component: () => import('pages/list/Index.vue'),
-      },
-      //adicioanr catálogo
       {
         path: 'Lista/Adicionar',
         component: () => import('pages/list/Add.vue'),
