@@ -19,9 +19,10 @@
          @input="refecth"
         />
 
-        <q-input
-         label="Comprador"
-         v-model="catalogue.customer"
+        <q-select
+          v-model="catalogue.customer"
+          label="Comprador/Cliente"
+          :options="options"
         />
 
         <div v-if="errorMsg" class="error-message q-mt-sm text-negative">
@@ -45,7 +46,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { validateSlug } from '../../apollo/Lists/queries';
+import { validateSlug, users } from '../../apollo/Lists/queries';
 import { createCatalogue } from '../../apollo/Lists/mutations';
 
 export default {
@@ -58,6 +59,18 @@ export default {
         }
       },
       update: (data) => data.validateSlug,
+    },
+
+    users: {
+      query: users,
+      variables() {
+        return {
+          where: {
+            type: 'CUSTOMER',
+          },
+        };
+      },
+      update: (data) => data.users,
     },
   },
 
@@ -74,6 +87,7 @@ export default {
     },
 
     validate: false,
+    users: [],
 
     loadingState: false,
     isLoading: false,
@@ -82,6 +96,15 @@ export default {
 
   computed: {
     ...mapState(['loggedUser']),
+
+    options() {
+      return this.users && this.users.length
+        ? this.users.map(user => ({
+          label: user.name,
+          value: user.id,
+        }))
+        : [];
+    }
   },
 
   methods: {

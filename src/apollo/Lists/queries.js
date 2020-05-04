@@ -6,8 +6,11 @@ export const validateSlug = gql`
   }
 `;
 
-export const tags = gql`
-  query tags {
-    tags,
+export const users = gql`
+  query users($where: UserWhereInput) {
+    users(where: $where) {
+      id
+      name
+    },
   }
 `;
