@@ -15,14 +15,22 @@
          v-model="catalogue.slug"
          :rules="[() => validate || 'Este nome já existe. Escolha outro']"
          :loading="loadingState"
-         @blur="refecth"
-         @input="refecth"
+         @blur="refetch"
+         @input="refetch"
         />
 
         <q-select
           v-model="catalogue.customer"
           label="Comprador/Cliente"
-          :options="options"
+          :options="userOptions"
+        />
+
+        <q-select
+          v-model="catalogue.items"
+          label="Itens"
+          :options="itemOptions"
+          multiple
+          class="q-mt-md"
         />
 
         <div v-if="errorMsg" class="error-message q-mt-sm text-negative">
@@ -46,7 +54,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { validateSlug, users } from '../../apollo/Lists/queries';
+import { validateSlug, users, items } from '../../apollo/Lists/queries';
 import { createCatalogue } from '../../apollo/Lists/mutations';
 
 export default {
@@ -72,10 +80,11 @@ export default {
       },
       update: (data) => data.users,
     },
-  },
 
-  components: {
-
+    items: {
+      query: items,
+      update: (data) => data.items,
+    },
   },
 
   data: () => ({
@@ -88,6 +97,7 @@ export default {
 
     validate: false,
     users: [],
+    items: [],
 
     loadingState: false,
     isLoading: false,
@@ -97,18 +107,27 @@ export default {
   computed: {
     ...mapState(['loggedUser']),
 
-    options() {
+    userOptions() {
       return this.users && this.users.length
         ? this.users.map(user => ({
           label: user.name,
           value: user.id,
         }))
         : [];
-    }
+    },
+
+    itemOptions() {
+      return this.items && this.items.length
+        ? this.items.map(item => ({
+          label: item.name,
+          value: item.id,
+        }))
+        : [];
+    },
   },
 
   methods: {
-    refecth() {
+    refetch() {
       return this.$apollo.queries.validate.refetch();
     },
 

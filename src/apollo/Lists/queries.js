@@ -14,3 +14,12 @@ export const users = gql`
     },
   }
 `;
+
+export const items = gql`
+  query items {
+    items {
+      id
+      name
+    },
+  }
+`;
