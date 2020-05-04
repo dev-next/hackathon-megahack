@@ -35,8 +35,8 @@ export default {
     id: {
       type: String,
     },
-    url: {
-      type: String,
+    photos: {
+      type: Array,
     },
     name: {
       type: String,
@@ -48,6 +48,12 @@ export default {
     },
     fields: {
       type: Array,
+    },
+  },
+
+  computed: {
+    url() {
+      return this.photos[0];
     },
   },
 
