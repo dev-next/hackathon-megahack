@@ -1,9 +1,10 @@
 <template>
   <q-item
     clickable
-    tag="a"
-    target="_blank"
-    :href="link"
+    :tag="link ? 'a' : 'span'"
+    :disabled="!link"
+    :to="link"
+    :class="{ separator: withSeparator }"
   >
     <q-item-section
       v-if="icon"
@@ -27,23 +28,34 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
 
     caption: {
       type: String,
-      default: ''
+      default: '',
     },
 
     link: {
       type: String,
-      default: '#'
     },
 
     icon: {
       type: String,
-      default: ''
-    }
-  }
-}
+      default: '',
+    },
+
+    withSeparator: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
 </script>
+
+<style lang="scss" scoped>
+  .separator {
+    margin-bottom: 8px;
+    border-bottom: 1px solid $grey-5;
+  }
+</style>

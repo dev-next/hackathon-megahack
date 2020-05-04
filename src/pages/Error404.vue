@@ -7,19 +7,19 @@
       >
     </p>
     <p class="text-faded">
-      Sorry, nothing here...<strong>(404)</strong>
+      Desculpe, recurso ainda não foi implementado...<strong>(404)</strong>
     </p>
     <q-btn
-      color="secondary"
+      color="primary"
       style="width:200px;"
       to="/"
-      label="Go back"
+      label="Voltar"
     />
   </div>
 </template>
 
 <script >
 export default {
-  name: 'Error404'
-}
+  name: 'Error404',
+};
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout class="main-layout" view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          <l-logo />
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn flat round dense icon="mdi-bell" />
       </q-toolbar>
     </q-header>
 
@@ -25,12 +25,13 @@
       bordered
       content-class="bg-grey-1"
     >
+      <user-info />
       <q-list>
         <q-item-label
           header
           class="text-grey-8"
         >
-          Essential Links
+          MENU
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -47,63 +48,108 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink'
+
+import UserInfo from '../components/UserInfo.vue';
+import lLogo from '../components/Login/Logo.vue';
+import EssentialLink from '../components/EssentialLink.vue';
 
 export default {
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    lLogo,
+    UserInfo,
+    EssentialLink,
   },
 
-  data () {
+  created() {
+    this.$q.dark.set(false);
+  },
+
+  data() {
     return {
       leftDrawerOpen: false,
       essentialLinks: [
         {
-          title: 'Docs',
-          caption: 'quasar.dev',
-          icon: 'school',
-          link: 'https://quasar.dev'
+          title: 'Início',
+          icon: 'home',
+          link: '/',
         },
         {
-          title: 'Github',
-          caption: 'github.com/quasarframework',
-          icon: 'code',
-          link: 'https://github.com/quasarframework'
+          title: 'Relatórios',
+          icon: 'mdi-file-chart',
         },
         {
-          title: 'Discord Chat Channel',
-          caption: 'chat.quasar.dev',
-          icon: 'chat',
-          link: 'https://chat.quasar.dev'
+          title: 'Produtos',
+          icon: 'mdi-package-variant-closed',
+          link: '/Produtos',
         },
         {
-          title: 'Forum',
-          caption: 'forum.quasar.dev',
-          icon: 'record_voice_over',
-          link: 'https://forum.quasar.dev'
+          title: 'Tendências de Consumo',
+          icon: 'mdi-chart-line',
+          withSeparator: true,
         },
         {
-          title: 'Twitter',
-          caption: '@quasarframework',
-          icon: 'rss_feed',
-          link: 'https://twitter.quasar.dev'
+          title: 'Adicionar Produtos',
+          icon: 'mdi-package-variant',
+          link: '/Produtos/Adicionar',
         },
         {
-          title: 'Facebook',
-          caption: '@QuasarFramework',
-          icon: 'public',
-          link: 'https://facebook.quasar.dev'
+          title: 'Criar Listas',
+          icon: 'mdi-cart',
+          link: '/Listas',
         },
         {
-          title: 'Quasar Awesome',
-          caption: 'Community Quasar projects',
-          icon: 'favorite',
-          link: 'https://awesome.quasar.dev'
-        }
-      ]
-    }
+          title: 'Vendedores',
+          icon: 'mdi-account',
+          link: '/Vendedores',
+          withSeparator: true,
+        },
+        {
+          title: 'Conta',
+          icon: 'mdi-account',
+          link: '/Clientes',
+        },
+        {
+          title: 'Configurações',
+          icon: 'mdi-cog',
+          withSeparator: true,
+        },
+        {
+          title: 'Perguntas Frequentes',
+          icon: 'mdi-help',
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style lang="scss">
+.main-layout {
+  h2 {
+    color: $grey-6;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
-</script>
+
+.text-primary {
+  color: $primary !important
+}
+.text-secondary {
+  color: $secondary !important
+}
+.text-accent {
+  color: $accent !important
+}
+.text-positive {
+  color: $positive !important
+}
+.text-negative {
+  color: $negative !important
+}
+.text-warning {
+  color: $warning !important
+}
+</style>

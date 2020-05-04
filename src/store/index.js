@@ -1,9 +1,11 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+/* eslint-disable import/no-extraneous-dependencies */
+import Vue from 'vue';
+import Vuex from 'vuex';
+import { SessionStorage } from 'quasar';
 
-// import example from './module-example'
+import login from './login';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 /*
  * If not building with SSR mode, you can
@@ -17,13 +19,29 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // example
+      login,
+    },
+
+    state: {
+      token: null,
+      loggedUser: null,
+    },
+
+    mutations: {
+      SAVE_LOGGED_USER(store, user) {
+        SessionStorage.set('user', user);
+        store.loggedUser = user;
+      },
+      SAVE_TOKEN(store, token) {
+        SessionStorage.set('token', token);
+        store.token = token;
+      },
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
-    strict: process.env.DEV
-  })
+    strict: process.env.DEV,
+  });
 
-  return Store
+  return Store;
 }
