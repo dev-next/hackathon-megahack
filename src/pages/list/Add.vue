@@ -1,9 +1,9 @@
 <template>
   <div>
     <q-page class="q-pa-md">
-      <h2>Adicionar Catálogo</h2>
+      <h2>Adicionar Lista</h2>
 
-      <q-form @submit="saveItem">
+      <q-form @submit="saveList">
         <q-input
          label="Nome"
          v-model="catalogue.name"
@@ -131,22 +131,23 @@ export default {
       return this.$apollo.queries.validate.refetch();
     },
 
-    async saveItem() {
-      /*try {
+    async saveList() {
+      try {
         this.isLoading = true;
         this.errorMsg = null;
 
-        const savedItem = {
-          ...this.product,
-          value: this.product.value / 100,
+        const catalogue = {
+          ...this.catalogue,
+          items: this.catalogue.items && this.catalogue.items.length
+            ? this.catalogue.items.map(item => item.value) : [],
+          seller: this.loggedUser.id,
+          customer: this.catalogue.customer ? this.catalogue.customer.value : '',
         };
 
         const { data } = await this.$apollo.mutate({
-          mutation: createItem,
+          mutation: createCatalogue,
           variables: {
-            item: savedItem,
-            store: this.loggedUser.stores[0].id,
-            createdBy: this.loggedUser.id,
+            catalogue,
           },
         });
 
@@ -156,14 +157,17 @@ export default {
 
         this.$q.notify({
           type: 'positive',
-          message: 'Produto salvo com sucesso!',
+          message: 'Lista salva com sucesso!',
         });
+
         this.resetForm();
+
+        return this.$router.push('/');
       } catch (err) {
         this.errorMsg = err.message.replace(/GraphQL error:/, '');
       } finally {
         this.isLoading = false;
-      }*/
+      }
     },
 
     resetForm() {
