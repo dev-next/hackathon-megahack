@@ -43,6 +43,7 @@ export const catalogueBySlug = gql`
 export const item = gql`
   query item ($id: ID!) {
     item(itemId: $id) {
+      id
       description
       fields {
         label

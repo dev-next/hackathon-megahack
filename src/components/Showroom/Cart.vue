@@ -4,7 +4,7 @@
       <div class="text-h5 cart-title q-mt-md">Meu Carrinho</div>
 
       <q-scroll-area style="height: 75vh" class="q-mb-sm">
-        <div class="cart-items q-mt-lg">
+        <div class="cart-items q-mt-lg" v-if="cart.length">
             <s-cart-item
               class="q-mb-md"
               v-for="i in cart"
@@ -12,16 +12,20 @@
               v-bind="i"
             />
         </div>
+        <div class="q-mt-lg q-pa-lg text-center text-grey-6" v-else>
+          Adicione itens ao carrinho e eles aparecerão aqui
+        </div>
       </q-scroll-area>
       <div class="total q-pr-md q-mb-sm">
-        Total: R$ 100,00
+        Total: {{ totalInCart.total | moneyNum }}
       </div>
-      <q-btn size="lg" @click="checkout" color="accent"> Continuar </q-btn>
+      <q-btn size="lg" :disabled="cart.length === 0" @click="checkout" color="accent"> Continuar </q-btn>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
 import sCartItem from './CartItem.vue';
 
 export default {
@@ -29,52 +33,10 @@ export default {
     sCartItem,
   },
 
-  data: () => ({
-    cart: [
-      {
-        id: '1',
-        url: 'https://via.placeholder.com/500',
-        name: 'Nome do Produto',
-        price: 79.99,
-        quantity: 2,
-      },
-      {
-        id: '2',
-        url: 'https://via.placeholder.com/500',
-        name: 'Nome do Produto',
-        price: 79.99,
-        quantity: 1,
-      },
-      {
-        id: '3',
-        url: 'https://via.placeholder.com/500',
-        name: 'Nome do Produto',
-        price: 79.99,
-        quantity: 3,
-      },
-      {
-        id: '4',
-        url: 'https://via.placeholder.com/500',
-        name: 'Nome do Produto',
-        price: 79.99,
-        quantity: 3,
-      },
-      {
-        id: '5',
-        url: 'https://via.placeholder.com/500',
-        name: 'Nome do Produto',
-        price: 79.99,
-        quantity: 3,
-      },
-      {
-        id: '6',
-        url: 'https://via.placeholder.com/500',
-        name: 'Nome do Produto',
-        price: 79.99,
-        quantity: 3,
-      },
-    ],
-  }),
+  computed: {
+    ...mapState('showroom', ['cart']),
+    ...mapGetters('showroom', ['totalInCart']),
+  },
 
   methods: {
     checkout() {

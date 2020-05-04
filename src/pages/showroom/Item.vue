@@ -67,9 +67,10 @@
     </div>
 
     <q-btn
-      class="btn-carrinho q-mt-lg "
+      class="btn-carrinho q-mt-lg"
       color="accent"
       size="lg"
+      @click="submit"
     >
       Comprar
     </q-btn>
@@ -77,6 +78,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { item } from '../../apollo/Showroom/queries';
 
 export default {
@@ -88,12 +90,30 @@ export default {
       },
     },
   },
+
   data() {
     return {
       slide: 0,
       item: {},
       itemID: this.$route.params.item,
     };
+  },
+
+  methods: {
+    submit() {
+      this.addToCart({
+        ...this.item,
+        qte: 1,
+      });
+
+      this.$q.notify({
+        type: 'positive',
+        position: 'top',
+        message: 'Item adicionado ao carrinho!',
+      });
+      this.$router.push(`/v/${this.$route.params.id}`);
+    },
+    ...mapActions('showroom', ['addToCart']),
   },
 };
 </script>
