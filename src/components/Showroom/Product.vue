@@ -4,7 +4,7 @@
     @click="productDetail"
   >
     <q-img
-      :src="url"
+      :src="url || 'https://via.placeholder.com/500'"
       :alt="name"
       class="rounded-borders product-img"
       style="height: 70vw; width: 70vw"
@@ -17,13 +17,13 @@
         <div class="fields">
           <div class="field" v-for="(f, k) in fields" :key="k">
             <span class="label">{{ f.label }}: </span>
-            <span class="value">{{ f.values }}</span>
+            <span class="value">{{ f.value }}</span>
           </div>
         </div>
 
       </div>
       <div class="right">
-        <div class="price">{{ price | moneyNum }}</div>
+        <div class="price">{{ value | moneyNum }}</div>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@ export default {
       type: String,
       default: '',
     },
-    price: {
+    value: {
       type: Number,
       default: 0,
     },
@@ -69,10 +69,10 @@ export default {
       width: 70vw;
       display: flex;
       .left {
-        width: 70%;
+        width: 60%;
       }
       .right {
-        width: 30%;
+        width: 40%;
         text-align: right;
       }
       .name {
