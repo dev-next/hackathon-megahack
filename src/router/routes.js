@@ -1,3 +1,4 @@
+import { SessionStorage } from 'quasar';
 
 const routes = [
   {
@@ -22,6 +23,15 @@ const routes = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
+    beforeEnter: (to, from, next) => {
+      const ssToken = SessionStorage.getItem('token');
+      const ssUser = SessionStorage.getItem('user');
+      if (!ssToken || !ssUser) {
+        next('/Login');
+      } else {
+        next();
+      }
+    },
     children: [
       {
         path: '',

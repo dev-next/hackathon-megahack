@@ -167,8 +167,8 @@ export default {
         };
         // throw new Error(data.errors[0].message);
         const { authenticate: { token, user } } = data;
-        this.SAVE_LOGGED_USER(user);
-        this.SAVE_TOKEN(token);
+        await this.SAVE_LOGGED_USER(user);
+        await this.SAVE_TOKEN(token);
         this.$router.push('/');
         /* -------------- */
 
