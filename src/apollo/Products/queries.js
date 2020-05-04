@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const items = gql`
-  query {
+  query items {
     items {
       id
       name
@@ -15,5 +15,11 @@ export const items = gql`
       }
       creationDate
     }
+  }
+`;
+
+export const tags = gql`
+  query tags {
+    tags,
   }
 `;

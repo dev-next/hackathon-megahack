@@ -53,8 +53,16 @@
 import { mapState } from 'vuex';
 import pProductTags from '../../components/Products/productTags.vue';
 import { createItem } from '../../apollo/Products/mutations';
+import { tags } from '../../apollo/Products/queries';
 
 export default {
+  apollo: {
+    tagsOptions: {
+      query: tags,
+      update: (d) => d.tags,
+    },
+  },
+
   components: {
     pProductTags,
   },

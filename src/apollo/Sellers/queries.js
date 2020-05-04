@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const sellers = gql`
-  query {
+  query sellers {
     sellers {
       name
       email
