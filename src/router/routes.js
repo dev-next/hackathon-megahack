@@ -49,7 +49,10 @@ const routes = [
       },
     ]
   },
-
+  {
+    path: '/v/Erro',
+    component: () => import('pages/showroom/Error.vue'),
+  },
   {
     path: '/v',
     component: () => import('layouts/ShowroomLayout.vue'),
@@ -73,7 +76,7 @@ const routes = [
       {
         path: ':id/item/:item',
         component: () => import('pages/showroom/Item.vue'),
-      }
+      },
     ],
   },
 ];

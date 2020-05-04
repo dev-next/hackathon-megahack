@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md q-mb-md item-page">
-    <div class="text-h4 q-mb-lg">{{ name }}</div>
+    <div class="text-h4 q-mb-lg">{{ item.name }}</div>
     <div class="image-container">
       <q-carousel
         animated
@@ -10,7 +10,7 @@
         infinite
       >
         <q-carousel-slide
-          v-for="(image, index) in images"
+          v-for="(image, index) in item.photos"
           :key="index"
           :name='index'
           :img-src="image"
@@ -20,7 +20,7 @@
 
     <div class="details">
       <div class="left">
-        <div class="name q-mb-xs">{{ name }}</div>
+        <div class="name q-mb-xs">{{ item.name }}</div>
         <div class="fields">
           <div class="field">
             <span class="label">Cores: </span>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="right">
-        <div class="price">{{ price | moneyNum }}</div>
+        <div class="price">{{ item.value | moneyNum }}</div>
       </div>
     </div>
 
@@ -41,7 +41,7 @@
       <div class="q-mb-md">
         <div class="title q-mb-sm">Cores</div>
         <q-btn-toggle
-          v-model="cores"
+          v-model="item.cores"
           toggle-color="accent"
           spread
           :options="[
@@ -54,7 +54,7 @@
       <div>
         <div class="title q-mb-sm">Tamanhos</div>
         <q-btn-toggle
-          v-model="tamanho"
+          v-model="item.tamanho"
           toggle-color="accent"
           spread
           :options="[
@@ -77,20 +77,24 @@
 </template>
 
 <script>
-export default {
-  data: () => ({
-    name: 'Nome do Item',
-    slide: 1,
-    images: [
-      'https://via.placeholder.com/500',
-      'https://via.placeholder.com/500',
-      'https://via.placeholder.com/500',
-    ],
-    price: 79.99,
+import { item } from '../../apollo/Showroom/queries';
 
-    cores: null,
-    tamanho: null,
-  }),
+export default {
+  apollo: {
+    item: {
+      query: item,
+      variables() {
+        return { id: this.itemID };
+      },
+    },
+  },
+  data() {
+    return {
+      slide: 0,
+      item: {},
+      itemID: this.$route.params.item,
+    };
+  },
 };
 </script>
 
@@ -131,7 +135,7 @@ export default {
         width: 70%;
       }
       .right {
-        width: 30%;
+        width: 40%;
         text-align: right;
       }
       .name {
