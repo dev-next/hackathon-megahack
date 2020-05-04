@@ -77,7 +77,7 @@ module.exports = function quasarConfig(ctx) {
       env: ctx.dev ? {
         ENDPOINT_URL: JSON.stringify('http://localhost:4000/graphql'),
       } : {
-        ENDPOINT_URL: JSON.stringify('http://vitrine.dev-next.com:4000/graphql'),
+        ENDPOINT_URL: JSON.stringify('http://vitrine-api.dev-next.com:4000/graphql'),
       },
 
       // rtl: false, // https://quasar.dev/options/rtl-support
